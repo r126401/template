@@ -1,2 +1,4 @@
-# template
-Plantilla para la creacion de proyectos esp-idf
+# iotOnOff
+
+IotOnff es una aplicacion para controlar dispositivos interruptores.
+
