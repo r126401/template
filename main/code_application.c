@@ -160,15 +160,17 @@ void pulsacion(DATOS_APLICACION *datosApp) {
             ESP_LOGI(TAG, ""TRAZAR"pulsacion corta", INFOTRAZA);
             operacion_rele(datosApp, MANUAL, INDETERMINADO);
             ESP_LOGI(TAG, ""TRAZAR"AQUI ENVIAREMOS EL REPORTE DE QUE SE HA PULSADO EL BOTON", INFOTRAZA);
-            informe = appuser_generar_informe_espontaneo(datosApp, ACTUACION_RELE_LOCAL, NULL);
+            //informe = appuser_generar_informe_espontaneo(datosApp, ACTUACION_RELE_LOCAL, NULL);
 
             ESP_LOGI(TAG, ""TRAZAR"REPORTE GENERADO Y DISPUESTO PARA ENVIAR", INFOTRAZA);
+            /*
             if (informe != NULL) {
-            	publicar_mensaje_json(datosApp, informe);
+            	//publicar_mensaje_json(datosApp, informe);
 
             } else {
             	ESP_LOGE(TAG, ""TRAZAR"MENSAJE DE PULSACION CORTA INVALIDO", INFOTRAZA);
             }
+            */
 
 
 
