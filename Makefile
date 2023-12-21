@@ -4,7 +4,7 @@
 #
 SW_VERSION :="`date +'%y%m%d%H%M'`"
 CFLAGS := -DVERSION_SW=$(SW_VERSION)
-PROJECT_NAME := plantilla
+PROJECT_NAME := template
 
 
 EXTRA_COMPONENT_DIRS = /opt/esp/componentes ~/temporal/esp8266/idf/proyectos/$(PROJECT_NAME)/components

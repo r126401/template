@@ -8,7 +8,7 @@
 */
 
 
-#include <funciones_usuario.h>
+
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -25,53 +25,58 @@
 #include "configuracion.h"
 #include "programmer.h"
 #include "ntp.h"
-#include "configuracion_usuario.h"
 #include "common_data.h"
 #include "api_json.h"
 #include "lwip/dns.h"
 #include "alarmas.h"
-#include "interfaz_usuario.h"
+#include "user_interface.h"
 #include "nvslib.h"
 
 #include <sys/socket.h>
 #include <netdb.h>
+#include "events_device.h"
 
 
 
 
 DATOS_APLICACION datosApp;
 static const char *TAG = "PLANTILLA";
+TaskHandle_t handle;
+
+
 
 
 void app_main()
 {
 
-    //static os_timer_t temporizador;
 	esp_err_t error = ESP_OK;
+
 	ESP_LOGI(TAG, ""TRAZAR"COMIENZO DE LA APLICACION version", INFOTRAZA);
-	//ESP_LOGI(TAG, ""TRAZAR"VERSION ORIGINAL DE COMPILACION: %d", INFOTRAZA, VERSION_SW);
-	DATOS_GENERALES *datosGenerales;
-	datosGenerales = (DATOS_GENERALES*) calloc(1, sizeof(DATOS_GENERALES));
-	datosApp.datosGenerales = datosGenerales;
-	uart_set_baudrate(UART_NUM_0, 115200);
 
-	error = inicializar_nvs(CONFIG_NAMESPACE, &datosApp.handle);
-	if (error != ESP_OK) {
-		ESP_LOGE(TAG, ""TRAZAR" ERROR AL INICIALIZAR NVS", INFOTRAZA);
-		error = ESP_FAIL;
-	} else {
-		error = ESP_OK;
-	}
+	//error = init_code_application(&datosApp);
+	create_event_task(&datosApp);
 
-
-
-    /* Inicializamos la aplicacion */
 	error = init_application(&datosApp, CONFIG_CARGA_CONFIGURACION);
 	if (error == ESP_OK) {
 		ESP_LOGI(TAG, ""TRAZAR"INICIALIZACION CORRECTA", INFOTRAZA);
 	} else {
-		ESP_LOGE(TAG, ""TRAZAR"NO SE HA PODIDO INICIALIZAR EL DISPOSITIVO", INFOTRAZA);
+
 	}
+
+
+
+	//xTaskCreate(task_iotThermostat, "tarea_lectura_temperatura", 8192, (void*) &datosApp, 1, NULL);
+
+	if(is_factory() == ESP_OK) {
+
+		send_event(__func__,EVENT_FACTORY);
+	} else {
+
+		conectar_dispositivo_wifi();
+		ESP_LOGI(TAG, ""TRAZAR" ESTADO ANTES DE INICIAR GESTION: %d", INFOTRAZA, datosApp.datosGenerales->estadoApp);
+
+	}
+
 
 
 

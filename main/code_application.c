@@ -8,7 +8,7 @@
 
 
 #include <dialogos_json.h>
-#include "configuracion_usuario.h"
+
 #include "esp_err.h"
 #include "esp_log.h"
 #include "common_data.h"
@@ -16,8 +16,8 @@
 #include "api_json.h"
 #include "driver/gpio.h"
 #include "conexiones.h"
-#include "funciones_usuario.h"
-#include "interfaz_usuario.h"
+
+#include "user_interface.h"
 #include "FreeRTOS.h"
 
 
@@ -120,7 +120,7 @@ void pulsacion(DATOS_APLICACION *datosApp) {
 
     static os_timer_t repeticion;
     static uint8_t rep=0;
-    cJSON *informe;
+
 
 
 
