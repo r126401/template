@@ -7,7 +7,7 @@
 
 
 
-#include <dialogos_json.h>
+#include "dialogos_json.h"
 
 #include "esp_err.h"
 #include "esp_log.h"
@@ -21,7 +21,7 @@
 #include "FreeRTOS.h"
 
 
-static const char *TAG = "IOTONOFF";
+static const char *TAG = "APPLICATION";
 xQueueHandle cola_gpio = NULL;
 
 #define GPIO_OUTPUT_PIN_SEL  ((1ULL<<CONFIG_GPIO_PIN_RELE) | (1ULL<<CONFIG_GPIO_PIN_LED))
@@ -284,7 +284,29 @@ esp_err_t appuser_inicializar_aplicacion(DATOS_APLICACION *datosApp) {
 
 }
 
+esp_err_t init_code_application(DATOS_APLICACION *datosApp) {
 
+
+
+	DATOS_GENERALES *datosGenerales;
+	datosGenerales = (DATOS_GENERALES*) calloc(1, sizeof(DATOS_GENERALES));
+	datosApp->datosGenerales = datosGenerales;
+
+
+
+	//gpio_rele_in_out();
+	gpio_set_level(CONFIG_GPIO_PIN_RELE, OFF);
+
+	return ESP_OK;
+
+}
+
+esp_err_t app_task(DATOS_APLICACION *datosApp) {
+
+
+
+	return ESP_OK;
+}
 
 
 

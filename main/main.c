@@ -35,6 +35,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include "events_device.h"
+#include "code_application.h"
 
 
 
@@ -50,10 +51,10 @@ void app_main()
 {
 
 	esp_err_t error = ESP_OK;
-
+	uart_set_baudrate(UART_NUM_0, 115200);
 	ESP_LOGI(TAG, ""TRAZAR"COMIENZO DE LA APLICACION version", INFOTRAZA);
 
-	//error = init_code_application(&datosApp);
+	error = init_code_application(&datosApp);
 	create_event_task(&datosApp);
 
 	error = init_application(&datosApp, CONFIG_CARGA_CONFIGURACION);
@@ -78,6 +79,7 @@ void app_main()
 	}
 
 
+	xTaskCreate(app_task, "app_task", CONFIG_RESOURCE_APP_TASK, (void*) &datosApp, 1, NULL);
 
 
 
