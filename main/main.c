@@ -57,16 +57,16 @@ void app_main()
 	error = init_code_application(&datosApp);
 	create_event_task(&datosApp);
 
-	error = init_application(&datosApp, CONFIG_CARGA_CONFIGURACION);
+	error = init_application(&datosApp);
 	if (error == ESP_OK) {
 		ESP_LOGI(TAG, ""TRAZAR"INICIALIZACION CORRECTA", INFOTRAZA);
 	} else {
 
 	}
 
+	conectar_dispositivo_wifi();
 
-
-	//xTaskCreate(task_iotThermostat, "tarea_lectura_temperatura", 8192, (void*) &datosApp, 1, NULL);
+	/*
 
 	if(is_factory() == ESP_OK) {
 
@@ -78,8 +78,8 @@ void app_main()
 
 	}
 
-
-	xTaskCreate(app_task, "app_task", CONFIG_RESOURCE_APP_TASK, (void*) &datosApp, 1, NULL);
+*/
+	//xTaskCreate(app_task, "app_task", CONFIG_RESOURCE_APP_TASK, (void*) &datosApp, 1, NULL);
 
 
 
