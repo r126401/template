@@ -1,4 +1,4 @@
-menu "Configuracion template"
+menu "Application configurations"
 
 config TIPO_DISPOSITIVO
 	int "Tipo de dispositivo"
@@ -7,18 +7,7 @@ config TIPO_DISPOSITIVO
 		indica el tipo de dispositivo
 
 
-config NUM_TOPICS
-	int "Topics de la aplicacion"
-	default 3
-	help 
-		Indica los topics a gestionar por el dispositivo
-
-
-
-
-
-
-menu "Device configuration"
+menu "Device configurations"
 
 config GPIO_PIN_RELE
 	int "Pin gipo para activar el rele"
@@ -42,38 +31,5 @@ config GPIO_PIN_BOTON
 endmenu
 
 
-menu "Task Configuration"
-
-config RESOURCE_EVENT_TASK
-	int "memory event task"
-	default 4096
-	help 
-		Indica la memoria de la tarea event_task
-
-config RESOURCE_MQTT_TASK
-	int "memory mqtt task"
-	default 8192
-	help 
-		Indica la memoria de la tarea mqtt_task
-
-config RESOURCE_SMARTCONFIG_TASK
-	int "memory smartconfig task"
-	default 4096
-	help 
-		Indica la memoria de la tarea smartconfig_task
-
-
-config RESOURCE_OTA_TASK
-	int "memory ota task"
-	default 4096
-	help 
-		Indica la memoria de la tarea ota_task
-
-config RESOURCE_APP_TASK
-	int "memory app task"
-	default 4096
-	help 
-		Indica la memoria de la tarea app_task
-endmenu
 
 endmenu
