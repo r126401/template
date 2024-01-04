@@ -53,16 +53,6 @@ void app_main()
 {
 
 
-	const esp_app_desc_t *version = esp_ota_get_app_description();
-
-
-
-
-
-
-	ESP_LOGI(TAG, ""TRAZAR" IDF-VER: %s, APP-VER: %s", INFOTRAZA, version->idf_ver, version->version);
-
-
 	esp_err_t error = ESP_OK;
 	uart_set_baudrate(UART_NUM_0, 115200);
 	ESP_LOGI(TAG, ""TRAZAR"COMIENZO DE LA APLICACION version", INFOTRAZA);
