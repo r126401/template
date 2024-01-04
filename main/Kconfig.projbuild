@@ -6,6 +6,20 @@ config TIPO_DISPOSITIVO
 	help
 		indica el tipo de dispositivo
 
+
+config NUM_TOPICS
+	int "Topics de la aplicacion"
+	default 3
+	help 
+		Indica los topics a gestionar por el dispositivo
+
+
+
+
+
+
+menu "Device configuration"
+
 config GPIO_PIN_RELE
 	int "Pin gipo para activar el rele"
 	default 12
@@ -24,18 +38,11 @@ config GPIO_PIN_BOTON
 	help 
 		Indica el pin gpi con el que se activa el boton
 
-config NUM_TOPICS
-	int "Topics de la aplicacion"
-	default 3
-	help 
-		Indica los topics a gestionar por el dispositivo
 
+endmenu
 
 
 menu "Task Configuration"
-
-
-
 
 config RESOURCE_EVENT_TASK
 	int "memory event task"

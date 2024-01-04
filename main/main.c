@@ -69,19 +69,6 @@ void app_main()
 
 	conectar_dispositivo_wifi();
 
-	/*
-
-	if(is_factory() == ESP_OK) {
-
-		send_event(__func__,EVENT_FACTORY);
-	} else {
-
-		conectar_dispositivo_wifi();
-		ESP_LOGI(TAG, ""TRAZAR" ESTADO ANTES DE INICIAR GESTION: %d", INFOTRAZA, datosApp.datosGenerales->estadoApp);
-
-	}
-
-*/
 	//xTaskCreate(app_task, "app_task", CONFIG_RESOURCE_APP_TASK, (void*) &datosApp, 1, NULL);
 
 
